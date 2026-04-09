@@ -1,0 +1,23 @@
+Udaan (उड़ान) -- Crisis Entry. Purpose Destination.
+Copyright 2026 Divya Mohan (dmj.one)
+
+This product includes software developed by Divya Mohan (contact@dmj.one)
+and was built using Claude Code by Anthropic with the Claude MAX subscription.
+
+Built with:
+  - Qwik (https://qwik.dev) -- MIT License
+  - Elysia (https://elysiajs.com) -- MIT License
+  - RxDB (https://rxdb.info) -- Apache-2.0 License
+  - Tailwind CSS (https://tailwindcss.com) -- MIT License
+  - Bun (https://bun.sh) -- MIT License
+  - bloom-filters (https://github.com/Callidon/bloom-filters) -- MIT License
+
+Government scheme data sourced from:
+  - myscheme.gov.in (Government of India, MeitY)
+  - data.gov.in (Open Government Data Platform)
+  - pib.gov.in (Press Information Bureau)
+
+Emergency helpline numbers are official Government of India numbers:
+  112 (Emergency), 1800-599-0019 (KIRAN), 181 (Women), 1098 (Childline)
+
+Mission: #AatmanirbharBharat @India2047
