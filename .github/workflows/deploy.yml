@@ -21,6 +21,11 @@ jobs:
 
       - run: bun run build
 
+      - name: Prepare dist for Cloudflare Pages
+        run: |
+          cp -r server/ dist/server/
+          sed -i 's|"../server/|"./server/|g' dist/_worker.js
+
       - name: Create Pages project if needed
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
