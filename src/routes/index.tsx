@@ -65,17 +65,20 @@ export default component$(() => {
   return (
     <div class="space-y-10">
       <section aria-labelledby="hero-heading" class="py-8 text-center">
+        <p class="text-lg font-semibold text-purpose dark:text-blue-300">
+          आपकी मदद यहाँ है
+        </p>
         <h1
           id="hero-heading"
-          class="font-display text-6xl font-extrabold tracking-tight text-stone-900 dark:text-stone-100 sm:text-7xl"
+          class="mt-2 font-display text-5xl font-extrabold tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl"
         >
           <span class="text-crisis">उड़ान</span>
         </h1>
         <p class="mt-3 text-xl font-semibold text-stone-700 dark:text-stone-300">
           संकट में सहारा. उद्देश्य की खोज. समुदाय का संगम.
         </p>
-        <p class="mt-1 text-base text-stone-500 dark:text-stone-400">
-          Support in crisis. Discovery of purpose. Confluence of community.
+        <p class="mt-1 text-sm text-stone-500 dark:text-stone-400">
+          Help is here. Support in crisis. Discovery of purpose. Confluence of community.
         </p>
       </section>
 
