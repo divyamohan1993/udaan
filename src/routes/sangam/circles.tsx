@@ -4,6 +4,7 @@ import type { Circle } from "../../shared/types";
 import { CircleCard } from "../../components/community/circle-card";
 import { CreateCircle } from "../../components/community/create-circle";
 import { Button } from "../../components/ui/button";
+import { JourneyBridge } from "../../components/shared/journey-bridge";
 
 const demoCircles: Circle[] = [
   {
@@ -231,6 +232,9 @@ export default component$(() => {
           उद्देश्य खोजें / Find Purpose
         </a>
       </section>
+
+      {/* Journey-aware bridge */}
+      <JourneyBridge />
     </div>
   );
 });
