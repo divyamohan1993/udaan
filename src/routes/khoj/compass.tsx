@@ -4,7 +4,10 @@ import type { PurposeVector } from "../../shared/types";
 import { CompassFlow } from "../../components/purpose/compass-flow";
 import { PurposeRadar } from "../../components/purpose/purpose-radar";
 import { MissionCard } from "../../components/purpose/mission-card";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { JourneyBridge } from "../../components/shared/journey-bridge";
 import { computePurposeVector, matchMissions } from "../../lib/matching/purpose";
+import { saveJourney } from "../../lib/state/journey";
 import type { Mission } from "../../shared/types";
 
 export default component$(() => {
@@ -19,6 +22,11 @@ export default component$(() => {
     purposeVector.value = vector;
     matchedMissions.value = matchMissions(vector);
     showResults.value = true;
+
+    // Save journey state: connects Layer 2 to Layer 3
+    const topAxis = (Object.entries(vector) as [string, number][])
+      .sort((a, b) => b[1] - a[1])[0]?.[0];
+    saveJourney({ purposeVector: vector, topPurposeAxis: topAxis, completedCompass: true });
   });
 
   return (
@@ -105,6 +113,9 @@ export default component$(() => {
               मंडल खोजें / Find Your Circle
             </a>
           </section>
+
+          {/* Journey-aware bridge */}
+          <JourneyBridge />
 
           <nav aria-label="और विकल्प / More options" class="flex flex-wrap gap-3">
             <a

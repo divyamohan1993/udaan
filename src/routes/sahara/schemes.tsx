@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { JourneyBridge } from "../../components/shared/journey-bridge";
 import type {
   State,
   AgeBracket,
@@ -181,6 +182,9 @@ export default component$(() => {
           </span>
         </div>
       </a>
+
+      {/* Journey-aware bridge: context-aware next step */}
+      <JourneyBridge />
     </div>
   );
 });

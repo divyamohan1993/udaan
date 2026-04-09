@@ -13,6 +13,7 @@ import { Select } from "../ui/select";
 import { RadioGroup } from "../ui/radio-group";
 import { Button } from "../ui/button";
 import { Progress } from "../ui/progress";
+import { saveJourney } from "../../lib/state/journey";
 
 interface TriageFormProps {
   crisisType: CrisisType;
@@ -106,6 +107,25 @@ export const TriageForm = component$<TriageFormProps>(({ crisisType }) => {
   });
 
   const handleSubmit = $(async () => {
+    // Save journey state: connects Layer 1 to Layer 2
+    saveJourney({
+      profile: {
+        id: "triage-user",
+        state: form.state as State,
+        ageBracket: form.ageBracket as AgeBracket,
+        incomeBracket: form.incomeBracket as IncomeBracket,
+        category: form.category as Category,
+        gender: form.gender as Gender,
+        occupationType: form.occupationType as OccupationType,
+        language: "hi",
+        crisisType,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      },
+      crisisType,
+      completedTriage: true,
+    });
+
     const params = new URLSearchParams({
       crisis: crisisType,
       state: form.state,
