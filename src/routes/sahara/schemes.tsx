@@ -53,11 +53,14 @@ export default component$(() => {
           </span>
         </h1>
 
-        <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">
-          {schemes.length} योजनाएं मिलीं / {schemes.length} schemes found
-        </p>
+        {schemes.length > 0 && (
+          <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">
+            {schemes.length} योजनाएं मिलीं / {schemes.length} schemes found
+          </p>
+        )}
       </section>
 
+      {/* Immediate urgency: emergency contacts first, always */}
       {isImmediate && (
         <section
           aria-labelledby="immediate-help-heading"
@@ -67,7 +70,10 @@ export default component$(() => {
             id="immediate-help-heading"
             class="text-lg font-bold text-crisis"
           >
-            तुरंत मदद / Immediate Help
+            तुरंत मदद उपलब्ध है
+            <span class="block text-sm font-normal text-stone-600 dark:text-stone-400">
+              Immediate help is available
+            </span>
           </h2>
           <ul class="mt-2 space-y-2" role="list">
             <li>
@@ -94,23 +100,35 @@ export default component$(() => {
         </section>
       )}
 
+      {/* Scheme results or caring empty state */}
       {schemes.length === 0 ? (
         <div
-          class="rounded-xl border-2 border-stone-200 bg-stone-50 p-6 text-center dark:border-stone-700 dark:bg-stone-800"
+          class="rounded-xl border-2 border-purpose/30 bg-blue-50 p-6 text-center dark:border-purpose/40 dark:bg-blue-950"
           role="status"
         >
-          <p class="text-lg font-semibold text-stone-700 dark:text-stone-300">
-            कोई योजना नहीं मिली
+          <p class="text-xl font-bold text-stone-900 dark:text-stone-100">
+            हम समझते हैं, कोई बात नहीं
+          </p>
+          <p class="mt-2 text-base text-stone-700 dark:text-stone-300">
+            अभी कोई योजना नहीं मिली, लेकिन और रास्ते हैं.
           </p>
           <p class="mt-1 text-sm text-stone-500 dark:text-stone-400">
-            No schemes found. Please try changing your details.
+            We understand. No schemes matched right now, but there are other paths.
           </p>
-          <a
-            href="/sahara/triage"
-            class="mt-4 inline-flex min-h-[48px] items-center rounded-lg bg-purpose px-4 py-2 font-semibold text-white hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2"
-          >
-            दोबारा कोशिश करें / Try Again
-          </a>
+          <div class="mt-4 flex flex-wrap justify-center gap-3">
+            <a
+              href="/sahara/triage"
+              class="inline-flex min-h-[48px] items-center rounded-lg bg-purpose px-4 py-2 font-semibold text-white hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2"
+            >
+              जानकारी बदलें / Change Details
+            </a>
+            <a
+              href="/sahara/mental-health"
+              class="inline-flex min-h-[48px] items-center rounded-lg border-2 border-purpose/30 px-4 py-2 font-semibold text-purpose hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2"
+            >
+              सांस लें / Take a Breath
+            </a>
+          </div>
         </div>
       ) : (
         <div class="space-y-4">
@@ -120,32 +138,55 @@ export default component$(() => {
         </div>
       )}
 
-      <nav aria-label="और विकल्प / More options" class="flex flex-wrap gap-3">
-        <a
-          href="/sahara/triage"
-          class="min-h-[48px] rounded-lg border-2 border-stone-200 px-4 py-2 text-sm font-semibold text-stone-700 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
+      {/* Bridge to Layer 2: warm, not clinical */}
+      <section
+        aria-labelledby="bridge-purpose-heading"
+        class="rounded-xl border-2 border-purpose/30 bg-gradient-to-br from-blue-50 to-blue-100 p-6 dark:border-purpose/40 dark:from-blue-950 dark:to-blue-900"
+      >
+        <h2
+          id="bridge-purpose-heading"
+          class="text-xl font-bold text-stone-900 dark:text-stone-100"
         >
-          जानकारी बदलें / Change Details
-        </a>
-        <a
-          href="/sahara/mental-health"
-          class="min-h-[48px] rounded-lg border-2 border-stone-200 px-4 py-2 text-sm font-semibold text-stone-700 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
-        >
-          मानसिक स्वास्थ्य / Mental Health
-        </a>
+          अब मकसद खोजें?
+        </h2>
+        <p class="mt-1 text-base text-stone-700 dark:text-stone-300">
+          योजनाएं सहारा हैं. असली ताकत उद्देश्य में है.
+        </p>
+        <p class="mt-1 text-sm text-stone-500 dark:text-stone-400">
+          Schemes are support. Real strength is in purpose.
+        </p>
         <a
           href="/khoj/compass"
-          class="min-h-[48px] rounded-lg border-2 border-purpose/30 px-4 py-2 text-sm font-semibold text-purpose hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:hover:bg-blue-950"
+          class="mt-3 inline-flex min-h-[48px] items-center rounded-lg bg-purpose px-5 py-2.5 font-bold text-white hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2"
+          aria-label="उद्देश्य खोजें / Discover your purpose"
         >
-          उद्देश्य खोजें / Find Purpose
+          5 सवाल, आपका रास्ता
+          <span class="ml-2 text-sm font-normal opacity-80">5 questions, your path</span>
         </a>
-      </nav>
+      </section>
+
+      {/* Mental health check-in */}
+      <a
+        href="/sahara/mental-health"
+        class="flex min-h-[48px] items-center gap-3 rounded-xl border-2 border-community/30 bg-green-50 px-4 py-3 hover:bg-green-100 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-community focus-visible:ring-offset-2 dark:border-community/40 dark:bg-green-950 dark:hover:bg-green-900"
+        aria-label="मानसिक स्वास्थ्य सहायता / Mental Health Support"
+      >
+        <span class="text-2xl" aria-hidden="true">&#x1F33F;</span>
+        <div>
+          <span class="block text-sm font-bold text-stone-900 dark:text-stone-100">
+            मन भारी है? एक पल रुकें.
+          </span>
+          <span class="block text-xs text-stone-500 dark:text-stone-400">
+            Feeling heavy? Pause for a moment. Breathing exercises and grounding.
+          </span>
+        </div>
+      </a>
     </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: "योजनाएं | Schemes | उड़ान",
+  title: "आपके लिए योजनाएं | Schemes for You | उड़ान",
   meta: [
     {
       name: "description",

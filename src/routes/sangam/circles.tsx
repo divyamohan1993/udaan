@@ -165,20 +165,72 @@ export default component$(() => {
         ))}
       </div>
 
-      <nav aria-label="और विकल्प / More options" class="flex gap-3">
+      {/* Cross-layer: scheme reminder for circle context */}
+      <section
+        aria-labelledby="scheme-hint-heading"
+        class="rounded-xl border-2 border-crisis/20 bg-red-50 p-4 dark:border-crisis/30 dark:bg-red-950"
+      >
+        <h2
+          id="scheme-hint-heading"
+          class="text-base font-bold text-stone-900 dark:text-stone-100"
+        >
+          क्या आपके मंडल को सरकारी मदद मिल सकती है?
+        </h2>
+        <p class="mt-1 text-sm text-stone-600 dark:text-stone-400">
+          बागान चलाते हैं? PM-KISAN से मदद मिल सकती है. बच्चों को पढ़ाते हैं? शिक्षा योजनाएं देखें.
+        </p>
+        <p class="text-xs text-stone-500 dark:text-stone-500 mt-1">
+          Running a garden? PM-KISAN can help. Teaching kids? Check education schemes.
+        </p>
+        <a
+          href="/sahara/triage"
+          class="mt-2 inline-flex min-h-[48px] items-center rounded-lg border-2 border-crisis/30 px-4 py-2 text-sm font-semibold text-crisis hover:bg-red-100 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-crisis focus-visible:ring-offset-2 dark:hover:bg-red-900"
+        >
+          योजनाएं खोजें / Find Schemes
+        </a>
+      </section>
+
+      {/* Cross-layer: mental health check-in */}
+      <a
+        href="/sahara/mental-health"
+        class="flex min-h-[48px] items-center gap-3 rounded-xl border-2 border-purpose/20 bg-blue-50 px-4 py-3 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:border-purpose/30 dark:bg-blue-950 dark:hover:bg-blue-900"
+        aria-label="मानसिक स्वास्थ्य जांच / Mental health check-in"
+      >
+        <span class="text-xl" aria-hidden="true">&#x1F33F;</span>
+        <div>
+          <span class="block text-sm font-bold text-stone-900 dark:text-stone-100">
+            समुदाय में होना अच्छा है, लेकिन अपना ख़्याल भी रखें
+          </span>
+          <span class="block text-xs text-stone-500 dark:text-stone-400">
+            Community is good, but take care of yourself too. Breathing exercises inside.
+          </span>
+        </div>
+      </a>
+
+      {/* Cross-layer: purpose compass if not done */}
+      <section
+        aria-labelledby="bridge-khoj-heading"
+        class="rounded-xl border-2 border-purpose/20 bg-gradient-to-br from-blue-50 to-white p-4 dark:border-purpose/30 dark:from-blue-950 dark:to-stone-900"
+      >
+        <h2
+          id="bridge-khoj-heading"
+          class="text-base font-bold text-stone-900 dark:text-stone-100"
+        >
+          अपना उद्देश्य अभी तक नहीं खोजा?
+        </h2>
+        <p class="mt-1 text-sm text-stone-600 dark:text-stone-400">
+          5 सवाल. आपका मिशन. सही मंडल.
+        </p>
+        <p class="text-xs text-stone-500 dark:text-stone-500">
+          5 questions. Your mission. The right circle.
+        </p>
         <a
           href="/khoj/compass"
-          class="min-h-[48px] rounded-lg border-2 border-purpose/30 px-4 py-2 text-sm font-semibold text-purpose hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:hover:bg-blue-950"
+          class="mt-2 inline-flex min-h-[48px] items-center rounded-lg bg-purpose px-4 py-2 text-sm font-bold text-white hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2"
         >
-          उद्देश्य खोजें / Purpose Compass
+          उद्देश्य खोजें / Find Purpose
         </a>
-        <a
-          href="/"
-          class="min-h-[48px] rounded-lg border-2 border-stone-200 px-4 py-2 text-sm font-semibold text-stone-700 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
-        >
-          होम / Home
-        </a>
-      </nav>
+      </section>
     </div>
   );
 });

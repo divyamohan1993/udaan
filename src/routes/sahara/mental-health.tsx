@@ -138,20 +138,63 @@ export default component$(() => {
         </ul>
       </section>
 
-      <nav aria-label="और विकल्प / More options" class="flex gap-3">
+      {/* After calming: gentle bridges to next steps */}
+      <section class="space-y-3">
+        <p class="text-center text-base font-semibold text-stone-700 dark:text-stone-300">
+          बेहतर महसूस हो रहा है? अब आगे बढ़ें.
+          <span class="block text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+            Feeling better? Take the next step.
+          </span>
+        </p>
+
         <a
           href="/sahara/triage"
-          class="min-h-[48px] rounded-lg border-2 border-stone-200 px-4 py-2 text-sm font-semibold text-stone-700 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
+          class="flex min-h-[48px] items-center gap-3 rounded-xl border-2 border-crisis/20 bg-red-50 px-4 py-3 hover:bg-red-100 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-crisis focus-visible:ring-offset-2 dark:border-crisis/30 dark:bg-red-950 dark:hover:bg-red-900"
+          aria-label="सरकारी योजनाएं खोजें / Find Government Schemes"
         >
-          योजनाएं खोजें / Find Schemes
+          <span class="text-xl" aria-hidden="true">&#x1F3DB;&#xFE0F;</span>
+          <div>
+            <span class="block text-sm font-bold text-stone-900 dark:text-stone-100">
+              सरकारी मदद लें
+            </span>
+            <span class="block text-xs text-stone-500 dark:text-stone-400">
+              Find government schemes for your situation
+            </span>
+          </div>
         </a>
+
         <a
-          href="/"
-          class="min-h-[48px] rounded-lg border-2 border-stone-200 px-4 py-2 text-sm font-semibold text-stone-700 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
+          href="/khoj/compass"
+          class="flex min-h-[48px] items-center gap-3 rounded-xl border-2 border-purpose/20 bg-blue-50 px-4 py-3 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-purpose focus-visible:ring-offset-2 dark:border-purpose/30 dark:bg-blue-950 dark:hover:bg-blue-900"
+          aria-label="उद्देश्य खोजें / Discover Your Purpose"
         >
-          होम / Home
+          <span class="text-xl" aria-hidden="true">&#x1F9ED;</span>
+          <div>
+            <span class="block text-sm font-bold text-stone-900 dark:text-stone-100">
+              अपना रास्ता खोजें
+            </span>
+            <span class="block text-xs text-stone-500 dark:text-stone-400">
+              Discover what gives you purpose through 5 questions
+            </span>
+          </div>
         </a>
-      </nav>
+
+        <a
+          href="/sangam/circles"
+          class="flex min-h-[48px] items-center gap-3 rounded-xl border-2 border-community/20 bg-green-50 px-4 py-3 hover:bg-green-100 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-community focus-visible:ring-offset-2 dark:border-community/30 dark:bg-green-950 dark:hover:bg-green-900"
+          aria-label="समुदाय से जुड़ें / Connect with Community"
+        >
+          <span class="text-xl" aria-hidden="true">&#x1F91D;</span>
+          <div>
+            <span class="block text-sm font-bold text-stone-900 dark:text-stone-100">
+              आप अकेले नहीं हैं
+            </span>
+            <span class="block text-xs text-stone-500 dark:text-stone-400">
+              Join people near you who understand
+            </span>
+          </div>
+        </a>
+      </section>
     </div>
   );
 });
