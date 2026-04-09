@@ -23,7 +23,7 @@ export const CreateCircle = component$<CreateCircleProps>((props) => {
   const handleSubmit = $(() => {
     // In production, this would create a circle via API
     // For showcase, just close the form
-    onClose$();
+    props.onClose$();
   });
 
   return (
@@ -105,7 +105,7 @@ export const CreateCircle = component$<CreateCircleProps>((props) => {
           <Button variant="community" type="submit" ariaLabel="मंडल बनाएं / Create Circle">
             मंडल बनाएं / Create Circle
           </Button>
-          <Button variant="ghost" onClick$={onClose$} ariaLabel="रद्द करें / Cancel">
+          <Button variant="ghost" onClick$={props.onClose$} ariaLabel="रद्द करें / Cancel">
             रद्द करें / Cancel
           </Button>
         </div>

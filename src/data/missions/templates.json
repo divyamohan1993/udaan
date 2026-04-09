@@ -1,0 +1,122 @@
+[
+  {
+    "id": "teach-kids",
+    "title": "Teach Kids in Your Mohalla",
+    "titleHi": "अपने मोहल्ले के बच्चों को पढ़ाएं",
+    "description": "Run informal education sessions for neighborhood children. Share what you know -- math, reading, science, art, life skills.",
+    "descriptionHi": "पड़ोस के बच्चों के लिए अनौपचारिक शिक्षा सत्र चलाएं। जो आप जानते हैं वो बांटें -- गणित, पढ़ाई, विज्ञान, कला, जीवन कौशल।",
+    "category": "knowledge",
+    "requirements": ["Open space or room", "Basic teaching materials", "1-2 hours daily"],
+    "impactMetric": "Children taught per month",
+    "impactMetricHi": "हर महीने पढ़ाए गए बच्चे",
+    "difficulty": "easy"
+  },
+  {
+    "id": "community-garden",
+    "title": "Start a Community Garden",
+    "titleHi": "सामुदायिक बगीचा शुरू करें",
+    "description": "Transform unused land into a shared vegetable garden. Grow food together, share the harvest, build community bonds.",
+    "descriptionHi": "खाली ज़मीन को साझा सब्ज़ी के बगीचे में बदलें। साथ मिलकर खाना उगाएं, फसल बांटें, समुदाय को मज़बूत करें।",
+    "category": "nature",
+    "requirements": ["Small plot of land", "Seeds and basic tools", "Water source nearby"],
+    "impactMetric": "Kg of vegetables grown per month",
+    "impactMetricHi": "हर महीने उगाई गई सब्ज़ियां (किलो)",
+    "difficulty": "medium"
+  },
+  {
+    "id": "repair-hub",
+    "title": "Neighborhood Repair Hub",
+    "titleHi": "पड़ोस का मरम्मत केंद्र",
+    "description": "Set up a weekly repair station for electronics, appliances, clothes. Fix things instead of throwing them away. Teach others to repair.",
+    "descriptionHi": "इलेक्ट्रॉनिक्स, उपकरण, कपड़ों के लिए साप्ताहिक मरम्मत स्टेशन लगाएं। फेंकने की जगह ठीक करें। दूसरों को मरम्मत सिखाएं।",
+    "category": "craft",
+    "requirements": ["Basic repair tools", "Covered workspace", "Repair skills in any area"],
+    "impactMetric": "Items repaired per month",
+    "impactMetricHi": "हर महीने ठीक की गई चीज़ें",
+    "difficulty": "medium"
+  },
+  {
+    "id": "elder-care",
+    "title": "Elder Care Companions",
+    "titleHi": "बुज़ुर्गों की देखभाल साथी",
+    "description": "Visit elderly neighbors who live alone. Help with daily tasks, listen to their stories, connect them with health services.",
+    "descriptionHi": "अकेले रहने वाले बुज़ुर्ग पड़ोसियों से मिलें। रोज़मर्रा के कामों में मदद करें, उनकी कहानियां सुनें, स्वास्थ्य सेवाओं से जोड़ें।",
+    "category": "service",
+    "requirements": ["Empathy and patience", "2-3 hours per week", "Basic first aid knowledge helpful"],
+    "impactMetric": "Elders supported per month",
+    "impactMetricHi": "हर महीने सहायता पाने वाले बुज़ुर्ग",
+    "difficulty": "easy"
+  },
+  {
+    "id": "story-keeper",
+    "title": "Neighborhood Story Keeper",
+    "titleHi": "मोहल्ले की कहानियों के रखवाले",
+    "description": "Document local history, traditions, and stories from elders. Record oral histories before they're lost. Create a community archive.",
+    "descriptionHi": "स्थानीय इतिहास, परंपराओं और बुज़ुर्गों की कहानियों का दस्तावेज़ बनाएं। मौखिक इतिहास को खोने से पहले रिकॉर्ड करें। सामुदायिक संग्रह बनाएं।",
+    "category": "expression",
+    "requirements": ["Phone for recording", "Writing materials", "Curiosity about local history"],
+    "impactMetric": "Stories documented per month",
+    "impactMetricHi": "हर महीने दर्ज की गई कहानियां",
+    "difficulty": "easy"
+  },
+  {
+    "id": "community-kitchen",
+    "title": "Community Kitchen",
+    "titleHi": "सामुदायिक रसोई",
+    "description": "Cook and share meals with neighbors in need. Everyone brings what they can. No one goes hungry in your mohalla.",
+    "descriptionHi": "ज़रूरतमंद पड़ोसियों के साथ खाना बनाएं और बांटें। हर कोई जो दे सके लाए। आपके मोहल्ले में कोई भूखा न रहे।",
+    "category": "service",
+    "requirements": ["Cooking space", "Utensils", "Volunteers for cooking and serving"],
+    "impactMetric": "Meals served per week",
+    "impactMetricHi": "हर हफ़्ते परोसे गए भोजन",
+    "difficulty": "medium"
+  },
+  {
+    "id": "digital-literacy",
+    "title": "Digital Literacy Classes",
+    "titleHi": "डिजिटल साक्षरता कक्षाएं",
+    "description": "Teach neighbors to use smartphones, internet, UPI payments, government portals. Bridge the digital divide one person at a time.",
+    "descriptionHi": "पड़ोसियों को स्मार्टफ़ोन, इंटरनेट, UPI भुगतान, सरकारी पोर्टल इस्तेमाल करना सिखाएं। एक-एक करके डिजिटल खाई पाटें।",
+    "category": "knowledge",
+    "requirements": ["Smartphone or computer", "Internet connection", "Patience for teaching"],
+    "impactMetric": "People trained per month",
+    "impactMetricHi": "हर महीने प्रशिक्षित लोग",
+    "difficulty": "easy"
+  },
+  {
+    "id": "street-library",
+    "title": "Street Library",
+    "titleHi": "सड़क पुस्तकालय",
+    "description": "Set up a free book exchange point in your neighborhood. Collect, share, and circulate books. Make reading accessible to all.",
+    "descriptionHi": "अपने पड़ोस में मुफ़्त किताब विनिमय केंद्र लगाएं। किताबें इकट्ठा करें, बांटें, और घुमाएं। पढ़ाई सबके लिए सुलभ बनाएं।",
+    "category": "knowledge",
+    "requirements": ["Small shelf or box", "Donated books", "Weatherproof location"],
+    "impactMetric": "Books circulated per month",
+    "impactMetricHi": "हर महीने घूमने वाली किताबें",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cultural-events",
+    "title": "Local Cultural Events",
+    "titleHi": "स्थानीय सांस्कृतिक कार्यक्रम",
+    "description": "Organize music, dance, poetry, theater in your locality. Celebrate local talent. Build community through shared joy.",
+    "descriptionHi": "अपने इलाके में संगीत, नृत्य, कविता, नाटक का आयोजन करें। स्थानीय प्रतिभा का जश्न मनाएं। साझा खुशी से समुदाय बनाएं।",
+    "category": "expression",
+    "requirements": ["Open space for gathering", "Sound system optional", "Local performers"],
+    "impactMetric": "Events organized per month",
+    "impactMetricHi": "हर महीने आयोजित कार्यक्रम",
+    "difficulty": "hard"
+  },
+  {
+    "id": "clean-water",
+    "title": "Clean Water Initiative",
+    "titleHi": "स्वच्छ जल पहल",
+    "description": "Monitor local water quality, maintain community water points, educate about water purification and conservation.",
+    "descriptionHi": "स्थानीय पानी की गुणवत्ता की निगरानी करें, सामुदायिक जल स्रोतों का रखरखाव करें, जल शुद्धिकरण और संरक्षण के बारे में जागरूकता फैलाएं।",
+    "category": "nature",
+    "requirements": ["Water testing kit", "Basic plumbing knowledge helpful", "Community coordination"],
+    "impactMetric": "Households with clean water access",
+    "impactMetricHi": "स्वच्छ पानी पहुंच वाले घर",
+    "difficulty": "hard"
+  }
+]

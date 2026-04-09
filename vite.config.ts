@@ -3,7 +3,6 @@
  * When building, the adapter config is used which loads this file and extends it.
  */
 import { defineConfig, type UserConfig } from "vite";
-import type { InlineConfig } from "vitest/node";
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -48,10 +47,6 @@ export default defineConfig(({ command, mode }): UserConfig => {
     //       }
     //     : undefined,
 
-    test: {
-      include: ["src/**/*.test.ts", "tests/unit/**/*.test.ts"],
-      environment: "node",
-    } satisfies InlineConfig,
     server: {
       headers: {
         // Don't cache the server response in dev mode
