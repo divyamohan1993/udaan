@@ -1,0 +1,49 @@
+{
+  "description": "Claude MCP server configuration for Udaan. These are REAL integrations available via Claude MAX subscription.",
+  "servers": {
+    "cloudflare-d1": {
+      "purpose": "Query and mutate the scheme database at edge (SQLite on Cloudflare)",
+      "binding": "DB",
+      "database": "udaan-schemes",
+      "real_usage": [
+        "d1_database_query: SELECT * FROM schemes WHERE category = 'health' AND scope = 'central'",
+        "d1_database_query: SELECT COUNT(*) FROM schemes GROUP BY category",
+        "d1_database_query: SELECT * FROM emergency_contacts WHERE state = 'UP' OR state = 'all'",
+        "d1_database_query: SELECT s.* FROM schemes s WHERE json_extract(s.eligibility, '$.incomeBrackets') LIKE '%BPL%'"
+      ],
+      "schema_file": "scripts/d1-schema.sql",
+      "seed_file": "scripts/seed-d1.ts"
+    },
+    "cloudflare-kv": {
+      "purpose": "Globally replicated key-value store for pre-computed data",
+      "binding": "KV",
+      "real_usage": [
+        "kv_namespace_get: bloom:{profileHash} -> serialized bloom filter for O(1) eligibility pre-check",
+        "kv_namespace_get: geo:{geohash5} -> peer bucket IDs for locality-sensitive matching",
+        "kv_namespace_get: i18n:{locale}:{key} -> individual string lookup (fallback when client cache misses)",
+        "kv_namespace_update: stats:daily:{date} -> aggregate usage counters"
+      ],
+      "data_flow": "Build scripts pre-compute bloom filters and geo buckets, upload to KV. Workers read at request time. O(1) reads."
+    },
+    "cloudflare-r2": {
+      "purpose": "Object storage for offline bundles and data snapshots (zero egress cost)",
+      "binding": "R2",
+      "bucket": "udaan-assets",
+      "real_usage": [
+        "r2_bucket_get: /offline-bundles/v1/ -> complete offline PWA bundle",
+        "r2_bucket_get: /data-snapshots/schemes-latest.json -> full scheme DB for client offline sync",
+        "r2_bucket_create: upload new offline bundle after scheme data update"
+      ],
+      "data_flow": "Scheduled tasks rebuild offline bundles. Service worker fetches from R2 on first install. RxDB syncs delta updates."
+    }
+  },
+  "setup_steps": [
+    "1. Set active Cloudflare account: use mcp__claude_ai_Cloudflare_Developer_Platform__set_active_account",
+    "2. Create D1 database: use mcp__claude_ai_Cloudflare_Developer_Platform__d1_database_create with name 'udaan-schemes'",
+    "3. Run schema: use mcp__claude_ai_Cloudflare_Developer_Platform__d1_database_query with SQL from scripts/d1-schema.sql",
+    "4. Seed data: run 'bun scripts/seed-d1.ts' and execute output via d1_database_query",
+    "5. Create KV namespace: use mcp__claude_ai_Cloudflare_Developer_Platform__kv_namespace_create",
+    "6. Create R2 bucket: use mcp__claude_ai_Cloudflare_Developer_Platform__r2_bucket_create with name 'udaan-assets'",
+    "7. Update wrangler.toml with real database_id, KV id from steps above"
+  ]
+}
