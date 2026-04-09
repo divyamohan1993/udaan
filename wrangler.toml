@@ -3,18 +3,13 @@ pages_build_output_dir = "dist"
 compatibility_date = "2026-04-01"
 compatibility_flags = ["nodejs_compat"]
 
-[[d1_databases]]
-binding = "DB"
-database_name = "udaan-schemes"
-database_id = "placeholder-will-be-set-on-deploy"
-
-[[kv_namespaces]]
-binding = "KV"
-id = "placeholder-will-be-set-on-deploy"
-
-[[r2_buckets]]
-binding = "R2"
-bucket_name = "udaan-assets"
+# D1, KV, R2 bindings are configured via Cloudflare Dashboard > Pages > Settings > Bindings
+# This avoids hardcoding IDs in the repo. The app works without them (defense in depth).
+# To add bindings:
+#   1. Create D1: wrangler d1 create udaan-schemes
+#   2. Create KV: wrangler kv namespace create udaan-kv
+#   3. Create R2: wrangler r2 bucket create udaan-assets
+#   4. Add bindings in Cloudflare Dashboard > Pages > udaan > Settings > Functions > Bindings
 
 [vars]
 ENVIRONMENT = "production"
