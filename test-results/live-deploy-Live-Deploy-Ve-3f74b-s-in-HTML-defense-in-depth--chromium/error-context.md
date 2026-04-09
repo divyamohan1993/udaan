@@ -39,8 +39,8 @@ b.send(JSON.stringify(a));c.classList.add(\"feedback-hidden\");d.classList.remov
                         <span data-translate=\"error\">Error</span>
                         <span>1019</span>
                     </h1>
-                    <span class=\"inline-block md:block heading-ray-id font-mono text-15 lg:text-sm lg:leading-relaxed\">Ray ID: 9e9866a41f1e5f2a •</span>
-                    <span class=\"inline-block md:block heading-ray-id font-mono text-15 lg:text-sm lg:leading-relaxed\">2026-04-09 09:14:20 UTC</span>
+                    <span class=\"inline-block md:block heading-ray-id font-mono text-15 lg:text-sm lg:leading-relaxed\">Ray ID: 9e98694def2d5909 •</span>
+                    <span class=\"inline-block md:block heading-ray-id font-mono text-15 lg:text-sm lg:leading-relaxed\">2026-04-09 09:16:09 UTC</span>
                     <h2 class=\"text-gray-600 leading-1.3 text-3xl lg:text-2xl font-light\">
                         Compute server error
                     </h2>
@@ -79,7 +79,7 @@ b.send(JSON.stringify(a));c.classList.add(\"feedback-hidden\");d.classList.remov
     </div>
 </div> <div class=\"cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300\">
     <p class=\"text-13\">
-      <span class=\"cf-footer-item sm:block sm:mb-1\">Cloudflare Ray ID: <strong class=\"font-semibold\">9e9866a41f1e5f2a</strong></span>
+      <span class=\"cf-footer-item sm:block sm:mb-1\">Cloudflare Ray ID: <strong class=\"font-semibold\">9e98694def2d5909</strong></span>
       <span class=\"cf-footer-separator sm:hidden\">•</span>
       <span id=\"cf-footer-item-ip\" class=\"cf-footer-item sm:block sm:mb-1\">
         Your IP:
@@ -98,7 +98,7 @@ b.send(JSON.stringify(a));c.classList.add(\"feedback-hidden\");d.classList.remov
          <script>
     window._cf_translation = {};··········
   </script>···············
-<span style=\"display: none !important;\"><img width=\"0\" height=\"0\" hidden=\"\" referrerpolicy=\"no-referrer\" src=\"https://benchmarks.cdn-b.compute-pipe.com/r20-100KB.png?r=11390181\" style=\"display: none !important;\"></span></body></html>"
+<span style=\"display: none !important;\"><img width=\"0\" height=\"0\" hidden=\"\" referrerpolicy=\"no-referrer\" src=\"https://cedexis-test.akamaized.net/img/r20-100KB.png?r=71052453\" style=\"display: none !important;\"></span></body></html>"
 ```
 
 # Page snapshot
@@ -107,8 +107,8 @@ b.send(JSON.stringify(a));c.classList.add(\"feedback-hidden\");d.classList.remov
 - generic [ref=e3]:
   - banner [ref=e4]:
     - heading "Error 1019" [level=1] [ref=e5]
-    - generic [ref=e6]: "Ray ID: 9e9866a41f1e5f2a •"
-    - generic [ref=e7]: 2026-04-09 09:14:20 UTC
+    - generic [ref=e6]: "Ray ID: 9e98694def2d5909 •"
+    - generic [ref=e7]: 2026-04-09 09:16:09 UTC
     - heading "Compute server error" [level=2] [ref=e8]
   - generic [ref=e9]:
     - generic [ref=e10]:
@@ -138,7 +138,7 @@ b.send(JSON.stringify(a));c.classList.add(\"feedback-hidden\");d.classList.remov
   - paragraph [ref=e26]:
     - generic [ref=e27]:
       - text: "Cloudflare Ray ID:"
-      - strong [ref=e28]: 9e9866a41f1e5f2a
+      - strong [ref=e28]: 9e98694def2d5909
     - text: •
     - generic [ref=e29]:
       - text: "Your IP:"
