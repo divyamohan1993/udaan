@@ -4,7 +4,7 @@ import { healthRoutes } from "./routes/health";
 import { emergencyRoutes } from "./routes/emergency";
 
 const app = new Elysia()
-  .onError(({ code, error }) => {
+  .onError(({ code }) => {
     // Errors are moments of care, not dead ends
     return {
       error: {
