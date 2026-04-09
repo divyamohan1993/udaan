@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-crisis: #dc2626;
+  --color-purpose: #2563eb;
+  --color-community: #16a34a;
+  --color-surface: #fafaf9;
+  --color-surface-dark: #1c1917;
+  --color-text: #1c1917;
+  --color-text-dark: #fafaf9;
+  --font-family-display: "Noto Sans Devanagari", "Noto Sans", system-ui, sans-serif;
+  --font-family-body: "Noto Sans Devanagari", "Noto Sans", system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-text: #000000;
+    --color-surface: #ffffff;
+  }
+}

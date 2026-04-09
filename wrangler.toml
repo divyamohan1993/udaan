@@ -1,0 +1,23 @@
+name = "udaan"
+main = "dist/_worker.js"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+[site]
+bucket = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "udaan-schemes"
+database_id = "placeholder-will-be-set-on-deploy"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "placeholder-will-be-set-on-deploy"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "udaan-assets"
+
+[vars]
+ENVIRONMENT = "production"
