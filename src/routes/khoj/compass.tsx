@@ -4,7 +4,6 @@ import type { PurposeVector } from "../../shared/types";
 import { CompassFlow } from "../../components/purpose/compass-flow";
 import { PurposeRadar } from "../../components/purpose/purpose-radar";
 import { MissionCard } from "../../components/purpose/mission-card";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { JourneyBridge } from "../../components/shared/journey-bridge";
 import { computePurposeVector, matchMissions } from "../../lib/matching/purpose";
 import { saveJourney } from "../../lib/state/journey";

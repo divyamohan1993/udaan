@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from "vitest";
-import { getDatabase, saveProfile, getProfile, cacheSchemes, getCachedSchemes, destroy } from "./db";
-import type { UserProfile, Scheme } from "../../shared/types";
+import { getDatabase, saveProfile, getProfile, cacheSchemes, getCachedSchemes, getEmergencyContacts, cacheEmergencyContacts, destroy } from "./db";
+import type { UserProfile, Scheme, EmergencyContact } from "../../shared/types";
 
 afterEach(async () => {
   await destroy();
@@ -37,7 +37,6 @@ describe("Offline DB - Profile", () => {
   });
 
   it("returns null for nonexistent profile", async () => {
-    // Force DB init with memory storage
     await getDatabase(true);
     const result = await getProfile("does-not-exist");
     expect(result).toBeNull();
@@ -69,7 +68,6 @@ describe("Offline DB - Profile", () => {
 
 describe("Offline DB - Scheme Caching", () => {
   it("caches and retrieves schemes", async () => {
-    // Force memory storage
     await getDatabase(true);
 
     const schemes: Scheme[] = [
@@ -132,5 +130,58 @@ describe("Offline DB - Scheme Caching", () => {
     await getDatabase(true);
     const cached = await getCachedSchemes();
     expect(cached).toHaveLength(0);
+  });
+});
+
+describe("Offline DB - Emergency Contacts (defense in depth)", () => {
+  it("pre-seeds critical emergency contacts on first DB creation", async () => {
+    await getDatabase(true);
+    const contacts = await getEmergencyContacts();
+
+    // Must have contacts from first load -- no empty state for emergencies
+    expect(contacts.length).toBeGreaterThanOrEqual(5);
+
+    // Must include the critical numbers
+    const numbers = contacts.map((c) => c.number);
+    expect(numbers).toContain("112");
+    expect(numbers).toContain("108");
+    expect(numbers).toContain("1800-599-0019");
+    expect(numbers).toContain("181");
+    expect(numbers).toContain("1098");
+  });
+
+  it("caches additional emergency contacts without losing critical ones", async () => {
+    await getDatabase(true);
+
+    const extra: EmergencyContact[] = [
+      {
+        id: "extra-food",
+        name: "Food Helpline",
+        nameHi: "खाद्य हेल्पलाइन",
+        number: "14445",
+        type: "food",
+        state: "all",
+        available: "9am-6pm",
+      },
+    ];
+
+    await cacheEmergencyContacts(extra);
+    const contacts = await getEmergencyContacts();
+
+    // Original critical contacts still present
+    expect(contacts.some((c) => c.number === "112")).toBe(true);
+    // New contact also present
+    expect(contacts.some((c) => c.number === "14445")).toBe(true);
+  });
+
+  it("never returns empty -- always has critical contacts", async () => {
+    // getEmergencyContacts must always return data, whether from DB or hardcoded
+    const contacts = await getEmergencyContacts();
+    expect(contacts.length).toBeGreaterThanOrEqual(5);
+
+    const numbers = contacts.map((c) => c.number);
+    expect(numbers).toContain("112");
+    expect(numbers).toContain("108");
+    expect(numbers).toContain("1800-599-0019");
   });
 });
