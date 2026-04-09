@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { t, getLocaleStrings } from "./index";
+import { t, getLocaleStrings, getKeyCount } from "./index";
 
 describe("i18n", () => {
   it("resolves English strings", () => {
@@ -9,12 +9,20 @@ describe("i18n", () => {
 
   it("resolves Hindi strings", () => {
     const result = t("app.name", "hi");
-    expect(typeof result).toBe("string");
-    expect(result.length).toBeGreaterThan(0);
+    expect(result).toBe("उड़ान");
   });
 
-  it("falls back to Hindi for missing English keys", () => {
-    // Keys should exist in both locales
+  it("interpolates variables in English", () => {
+    const result = t("schemes.matchCount", "en", { count: "5" });
+    expect(result).toBe("5 schemes found for you");
+  });
+
+  it("interpolates variables in Hindi", () => {
+    const result = t("schemes.matchCount", "hi", { count: "5" });
+    expect(result).toBe("आपके लिए 5 योजनाएं मिलीं");
+  });
+
+  it("falls back to Hindi when key missing in English", () => {
     const enMap = getLocaleStrings("en");
     const hiMap = getLocaleStrings("hi");
     expect(enMap.size).toBeGreaterThan(0);
@@ -38,9 +46,23 @@ describe("i18n", () => {
   it("has matching keys in both locales", () => {
     const enMap = getLocaleStrings("en");
     const hiMap = getLocaleStrings("hi");
-    // Every English key should have a Hindi counterpart
     for (const key of enMap.keys()) {
       expect(hiMap.has(key), `Hindi missing key: ${key}`).toBe(true);
     }
+  });
+
+  it("has 60+ keys per locale", () => {
+    expect(getKeyCount("en")).toBeGreaterThanOrEqual(60);
+    expect(getKeyCount("hi")).toBeGreaterThanOrEqual(60);
+  });
+
+  it("interpolates multiple variables", () => {
+    const result = t("triage.step", "en", { current: "2", total: "4" });
+    expect(result).toBe("Step 2 of 4");
+  });
+
+  it("interpolates numeric variables", () => {
+    const result = t("circles.members", "en", { count: 5 });
+    expect(result).toBe("5 members");
   });
 });

@@ -1,5 +1,6 @@
-import type { Scheme, UserProfile, ProfileVector } from "../../shared/types";
+import type { Scheme, UserProfile, ProfileVector, CrisisType } from "../../shared/types";
 import { profileToVector } from "../../shared/types";
+import { CRISIS_TO_SCHEME_CATEGORIES } from "../../shared/constants";
 import schemes from "../../data/schemes/central.json";
 
 const schemeList = schemes as Scheme[];
@@ -59,34 +60,46 @@ for (const scheme of schemeList) {
 
 const schemeById = new Map<string, Scheme>(schemeList.map((s) => [s.id, s]));
 
-// Crisis type to scheme category mapping for ranking
-const crisisToCategories: Record<string, string[]> = {
-  "job-loss": ["employment", "skill", "finance"],
-  "no-food": ["food", "finance", "employment"],
-  "no-money": ["finance", "employment", "pension"],
-  "health": ["health", "insurance"],
-  "lost": ["health", "education", "skill"],
-  "purpose": ["education", "skill", "employment"],
-};
-
+/**
+ * O(1) scheme lookup via pre-computed hash map.
+ * Optionally ranks results by crisis type using CRISIS_TO_SCHEME_CATEGORIES.
+ */
 export function findSchemes(profile: UserProfile): Scheme[] {
   const vector: ProfileVector = profileToVector(profile);
   const ids = eligibilityIndex.get(vector) ?? [];
   const matched = ids.map((id) => schemeById.get(id)).filter(Boolean) as Scheme[];
 
-  // Rank by crisis relevance
+  // Rank by crisis relevance using shared constants
   if (profile.crisisType) {
-    const priorityCategories = crisisToCategories[profile.crisisType] ?? [];
-    matched.sort((a, b) => {
-      const aIdx = priorityCategories.indexOf(a.category);
-      const bIdx = priorityCategories.indexOf(b.category);
-      const aRank = aIdx === -1 ? 999 : aIdx;
-      const bRank = bIdx === -1 ? 999 : bIdx;
-      return aRank - bRank;
-    });
+    const priorityCategories = CRISIS_TO_SCHEME_CATEGORIES[profile.crisisType] ?? [];
+    const prioritySet = new Set(priorityCategories);
+    const categoryOrder = new Map(priorityCategories.map((c, i) => [c, i]));
+
+    // Partition into priority and non-priority
+    const priority: Scheme[] = [];
+    const rest: Scheme[] = [];
+    for (const scheme of matched) {
+      if (prioritySet.has(scheme.category)) {
+        priority.push(scheme);
+      } else {
+        rest.push(scheme);
+      }
+    }
+
+    // Sort priority by category order
+    priority.sort((a, b) => (categoryOrder.get(a.category) ?? 99) - (categoryOrder.get(b.category) ?? 99));
+
+    return [...priority, ...rest];
   }
 
-  return matched.slice(0, 10);
+  return matched;
+}
+
+/**
+ * Get the index size (for testing/diagnostics).
+ */
+export function getIndexSize(): number {
+  return eligibilityIndex.size;
 }
 
 export function getAllSchemes(): Scheme[] {

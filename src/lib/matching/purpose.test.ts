@@ -30,7 +30,6 @@ describe("Purpose Matching", () => {
     const teacherMissions = matchMissions(computePurposeVector(teacherAnswers));
     const gardenMissions = matchMissions(computePurposeVector(gardenAnswers));
 
-    // Different profiles should get different top missions
     expect(teacherMissions[0].id).not.toBe(gardenMissions[0].id);
   });
 
@@ -53,6 +52,29 @@ describe("Purpose Matching", () => {
     for (const value of Object.values(vector)) {
       expect(value).toBeGreaterThanOrEqual(0);
       expect(value).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("nature-focused answers rank garden mission first", () => {
+    const answers = ["gardening", "greenery", "grow", "pollution", "grower"];
+    const vector = computePurposeVector(answers);
+    const matched = matchMissions(vector);
+
+    expect(matched[0].category).toBe("nature");
+  });
+
+  it("service-focused answers rank service missions high", () => {
+    const answers = ["cooking", "food", "serve", "hunger", "helper"];
+    const vector = computePurposeVector(answers);
+    const matched = matchMissions(vector);
+
+    expect(matched[0].category).toBe("service");
+  });
+
+  it("handles empty answers gracefully", () => {
+    const vector = computePurposeVector([]);
+    for (const value of Object.values(vector)) {
+      expect(value).toBe(0);
     }
   });
 });
