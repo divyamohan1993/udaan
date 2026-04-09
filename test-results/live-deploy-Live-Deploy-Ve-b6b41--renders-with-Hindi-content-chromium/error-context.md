@@ -6,16 +6,22 @@
 
 # Test info
 
-- Name: live-deploy.spec.ts >> Live Deploy Verification >> /sahara/mental-health renders (not 404)
-- Location: tests/e2e/live-deploy.spec.ts:21:3
+- Name: live-deploy.spec.ts >> Live Deploy Verification >> landing page renders with Hindi content
+- Location: tests/e2e/live-deploy.spec.ts:7:3
 
 # Error details
 
 ```
-Error: expect(received).toBe(expected) // Object.is equality
+Error: expect(page).toHaveTitle(expected) failed
 
-Expected: 200
-Received: 503
+Expected pattern: /उड़ान/
+Received string:  "Compute server error | udaan-5z7.pages.dev | Cloudflare"
+Timeout: 5000ms
+
+Call log:
+  - Expect "toHaveTitle" with timeout 5000ms
+    9 × unexpected value "Compute server error | udaan-5z7.pages.dev | Cloudflare"
+
 ```
 
 # Page snapshot
@@ -24,8 +30,8 @@ Received: 503
 - generic [ref=e3]:
   - banner [ref=e4]:
     - heading "Error 1019" [level=1] [ref=e5]
-    - generic [ref=e6]: "Ray ID: 9e9866743a235f2a •"
-    - generic [ref=e7]: 2026-04-09 09:14:12 UTC
+    - generic [ref=e6]: "Ray ID: 9e98665f7a6e5f2a •"
+    - generic [ref=e7]: 2026-04-09 09:14:09 UTC
     - heading "Compute server error" [level=2] [ref=e8]
   - generic [ref=e9]:
     - generic [ref=e10]:
@@ -55,7 +61,7 @@ Received: 503
   - paragraph [ref=e26]:
     - generic [ref=e27]:
       - text: "Cloudflare Ray ID:"
-      - strong [ref=e28]: 9e9866743a235f2a
+      - strong [ref=e28]: 9e98665f7a6e5f2a
     - text: •
     - generic [ref=e29]:
       - text: "Your IP:"
@@ -78,7 +84,8 @@ Received: 503
   6  | 
   7  |   test("landing page renders with Hindi content", async ({ page }) => {
   8  |     await page.goto(LIVE_URL + "/");
-  9  |     await expect(page).toHaveTitle(/उड़ान/);
+> 9  |     await expect(page).toHaveTitle(/उड़ान/);
+     |                        ^ Error: expect(page).toHaveTitle(expected) failed
   10 |     await expect(page.getByText("आपकी मदद यहाँ है")).toBeVisible();
   11 |   });
   12 | 
@@ -92,8 +99,7 @@ Received: 503
   20 | 
   21 |   test("/sahara/mental-health renders (not 404)", async ({ page }) => {
   22 |     const res = await page.goto(LIVE_URL + "/sahara/mental-health");
-> 23 |     expect(res?.status()).toBe(200);
-     |                           ^ Error: expect(received).toBe(expected) // Object.is equality
+  23 |     expect(res?.status()).toBe(200);
   24 |     const title = await page.title();
   25 |     expect(title).not.toContain("404");
   26 |   });

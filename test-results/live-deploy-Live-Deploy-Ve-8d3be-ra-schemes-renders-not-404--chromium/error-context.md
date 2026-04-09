@@ -15,78 +15,56 @@
 Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 200
-Received: 404
+Received: 503
 ```
 
 # Page snapshot
 
 ```yaml
-- generic [ref=e2]:
-  - link "मुख्य सामग्री पर जाएं / Skip to main content" [ref=e3] [cursor=pointer]:
-    - /url: "#main-content"
+- generic [ref=e3]:
   - banner [ref=e4]:
-    - navigation "मुख्य नेविगेशन / Main navigation" [ref=e5]:
-      - link "उड़ान Udaan - होम पेज" [ref=e6] [cursor=pointer]:
-        - /url: /
-        - text: उड़ान Udaan
-      - generic [ref=e7]:
-        - list [ref=e8]:
-          - listitem [ref=e9]:
-            - link "सहारा" [ref=e10] [cursor=pointer]:
-              - /url: /sahara/triage
-          - listitem [ref=e11]:
-            - link "खोज" [ref=e12] [cursor=pointer]:
-              - /url: /khoj/compass
-          - listitem [ref=e13]:
-            - link "संगम" [ref=e14] [cursor=pointer]:
-              - /url: /sangam/circles
-        - 'switch "भाषा: हिन्दी. अंग्रेज़ी पर बदलें" [checked] [ref=e15] [cursor=pointer]':
-          - generic [ref=e16]: हि
-          - generic [ref=e17]: /
-          - generic [ref=e18]: En
-  - main [ref=e19]:
-    - generic [ref=e20]:
-      - alert [ref=e21]:
-        - paragraph [ref=e22]: हम समझते हैं, कोई बात नहीं
-        - paragraph [ref=e23]: यह पेज नहीं मिला. लेकिन आपकी मदद अभी भी यहाँ है.
-        - paragraph [ref=e24]: We understand, no worries. This page wasn't found, but help is still here.
-      - generic [ref=e25]:
-        - link "होम पेज पर जाएं / Go to Home" [ref=e26] [cursor=pointer]:
-          - /url: /
-          - text: वापस जाएं / Go Home
-        - generic [ref=e27]:
-          - link "योजनाएं खोजें / Find Schemes" [ref=e28] [cursor=pointer]:
-            - /url: /sahara/triage
-          - link "सांस लें / Breathe" [ref=e29] [cursor=pointer]:
-            - /url: /sahara/mental-health
-      - generic [ref=e30]:
-        - paragraph [ref=e31]: आपातकालीन / Emergency
-        - paragraph [ref=e32]:
-          - link "112" [ref=e33] [cursor=pointer]:
-            - /url: tel:112
-          - text: "|"
-          - link "KIRAN 1800-599-0019" [ref=e34] [cursor=pointer]:
-            - /url: tel:1800-599-0019
-  - complementary "Emergency contacts" [ref=e35]:
-    - paragraph [ref=e36]: आपातकालीन / Emergency
-    - generic [ref=e37]:
-      - 'link "Emergency services: dial 112" [ref=e38] [cursor=pointer]':
-        - /url: tel:112
-        - text: 112 Emergency
-      - 'link "KIRAN mental health helpline: dial 1800-599-0019" [ref=e39] [cursor=pointer]':
-        - /url: tel:1800-599-0019
-        - text: 1800-599-0019 KIRAN
-      - 'link "Women helpline: dial 181" [ref=e40] [cursor=pointer]':
-        - /url: tel:181
-        - text: 181 Women
-  - contentinfo [ref=e41]:
-    - generic [ref=e42]:
-      - paragraph [ref=e43]:
-        - strong [ref=e44]: उड़ान
-        - text: संकट से संकल्प तक | From Crisis to Purpose
-      - paragraph [ref=e45]: सपने देखो, साकार करो, साथ चलो | Dream, Manifest, Journey as One
-  - region "Mental health quick access" [ref=e46]:
-    - button "Mental health support" [ref=e47]: 🤍
+    - heading "Error 1019" [level=1] [ref=e5]
+    - generic [ref=e6]: "Ray ID: 9e9866903eba5f2a •"
+    - generic [ref=e7]: 2026-04-09 09:14:16 UTC
+    - heading "Compute server error" [level=2] [ref=e8]
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - heading "What happened?" [level=2] [ref=e11]
+      - paragraph [ref=e12]:
+        - text: You've requested a page on a website (udaan-5z7.pages.dev) that is on the
+        - link "Cloudflare" [ref=e13] [cursor=pointer]:
+          - /url: https://www.cloudflare.com/5xx-error-landing/
+        - text: network. An error occurred while constructing a dynamic response to your request.
+      - paragraph [ref=e14]:
+        - text: Please see
+        - link "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1019/" [ref=e15] [cursor=pointer]:
+          - /url: https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1019/
+        - text: for more details.
+    - generic [ref=e16]:
+      - heading "What can I do?" [level=2] [ref=e17]
+      - paragraph [ref=e18]:
+        - strong [ref=e19]: "If you are the owner of this website:"
+        - text: you should
+        - link "login to Cloudflare" [ref=e20] [cursor=pointer]:
+          - /url: https://www.cloudflare.com/login?utm_source=error_100x
+        - text: and check your error logs.
+  - generic [ref=e22]:
+    - text: Was this page helpful?
+    - button "Yes" [ref=e23] [cursor=pointer]
+    - button "No" [ref=e24] [cursor=pointer]
+  - paragraph [ref=e26]:
+    - generic [ref=e27]:
+      - text: "Cloudflare Ray ID:"
+      - strong [ref=e28]: 9e9866903eba5f2a
+    - text: •
+    - generic [ref=e29]:
+      - text: "Your IP:"
+      - button "Click to reveal" [ref=e30] [cursor=pointer]
+      - text: •
+    - generic [ref=e31]:
+      - text: Performance & security by
+      - link "Cloudflare" [ref=e32] [cursor=pointer]:
+        - /url: https://www.cloudflare.com/5xx-error-landing
 ```
 
 # Test source

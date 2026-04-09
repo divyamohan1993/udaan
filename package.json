@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "build": "qwik build && bun run build.server && bun run build.prepare",
-    "build.prepare": "bun build server/entry.cloudflare-pages.js --outfile dist/_worker.js --format esm --target browser --external:node:*",
+    "build.prepare": "bun build server/entry.cloudflare-pages.js --outfile dist/_worker.js --format esm --minify --external:node:*",
     "build.client": "vite build",
     "build.server": "vite build -c adapters/cloudflare-pages/vite.config.ts",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
