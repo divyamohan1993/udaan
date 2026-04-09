@@ -1,6 +1,6 @@
 {
-  "name": "my-qwik-empty-starter",
-  "description": "Blank project with routing included",
+  "name": "udaan",
+  "description": "उड़ान Udaan -- Crisis Entry. Purpose Destination. Community purpose platform for India.",
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
   },
@@ -51,5 +51,9 @@
     "elysia": "^1.4.28",
     "rxdb": "^17.1.0",
     "rxdb-utils": "^2.0.0-beta.2"
+  },
+  "overrides": {
+    "undici": "^8.0.2",
+    "vite": "^8.0.8"
   }
 }
