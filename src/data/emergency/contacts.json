@@ -1,0 +1,110 @@
+[
+  {
+    "id": "emergency-112",
+    "name": "National Emergency Number",
+    "nameHi": "राष्ट्रीय आपातकालीन नंबर",
+    "number": "112",
+    "type": "police",
+    "state": "all",
+    "available": "24/7"
+  },
+  {
+    "id": "ambulance-108",
+    "name": "National Ambulance Service",
+    "nameHi": "राष्ट्रीय एम्बुलेंस सेवा",
+    "number": "108",
+    "type": "ambulance",
+    "state": "all",
+    "available": "24/7"
+  },
+  {
+    "id": "mental-health-988",
+    "name": "Tele-MANAS Mental Health Helpline",
+    "nameHi": "टेली-मानस मानसिक स्वास्थ्य हेल्पलाइन",
+    "number": "14416",
+    "type": "mental-health",
+    "state": "all",
+    "available": "24/7"
+  },
+  {
+    "id": "kiran-helpline",
+    "name": "KIRAN Mental Health Helpline",
+    "nameHi": "किरण मानसिक स्वास्थ्य हेल्पलाइन",
+    "number": "1800-599-0019",
+    "type": "mental-health",
+    "state": "all",
+    "available": "24/7, Toll-free"
+  },
+  {
+    "id": "vandrevala-foundation",
+    "name": "Vandrevala Foundation Helpline",
+    "nameHi": "वंद्रेवाला फाउंडेशन हेल्पलाइन",
+    "number": "1860-2662-345",
+    "type": "mental-health",
+    "state": "all",
+    "available": "24/7, English/Hindi"
+  },
+  {
+    "id": "icall",
+    "name": "iCall Psychosocial Helpline (TISS)",
+    "nameHi": "आईकॉल मनोसामाजिक हेल्पलाइन (टिस)",
+    "number": "9152987821",
+    "type": "mental-health",
+    "state": "all",
+    "available": "Mon-Sat 8am-10pm"
+  },
+  {
+    "id": "women-helpline-181",
+    "name": "Women Helpline",
+    "nameHi": "महिला हेल्पलाइन",
+    "number": "181",
+    "type": "women",
+    "state": "all",
+    "available": "24/7"
+  },
+  {
+    "id": "childline-1098",
+    "name": "CHILDLINE India",
+    "nameHi": "चाइल्डलाइन इंडिया",
+    "number": "1098",
+    "type": "child",
+    "state": "all",
+    "available": "24/7, Toll-free"
+  },
+  {
+    "id": "nalsa-legal-aid",
+    "name": "NALSA Free Legal Aid Helpline",
+    "nameHi": "नालसा मुफ्त कानूनी सहायता हेल्पलाइन",
+    "number": "15100",
+    "type": "legal",
+    "state": "all",
+    "available": "24/7, Toll-free"
+  },
+  {
+    "id": "food-helpline",
+    "name": "Food Helpline (Dept of Food & Public Distribution)",
+    "nameHi": "खाद्य हेल्पलाइन (खाद्य एवं सार्वजनिक वितरण विभाग)",
+    "number": "1967",
+    "type": "food",
+    "state": "all",
+    "available": "24/7"
+  },
+  {
+    "id": "senior-citizen-14567",
+    "name": "Elder Line (Senior Citizen Helpline)",
+    "nameHi": "एल्डर लाइन (वरिष्ठ नागरिक हेल्पलाइन)",
+    "number": "14567",
+    "type": "legal",
+    "state": "all",
+    "available": "8am-8pm, Toll-free"
+  },
+  {
+    "id": "cyber-crime-1930",
+    "name": "National Cyber Crime Helpline",
+    "nameHi": "राष्ट्रीय साइबर अपराध हेल्पलाइन",
+    "number": "1930",
+    "type": "police",
+    "state": "all",
+    "available": "24/7"
+  }
+]

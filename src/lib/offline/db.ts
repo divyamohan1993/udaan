@@ -1,17 +1,11 @@
 import {
   createRxDatabase,
-  addRxPlugin,
+  removeRxDatabase,
   type RxDatabase,
   type RxCollection,
 } from "rxdb";
-import { RxDBDevModePlugin } from "rxdb/plugins/dev-mode";
 import { getRxStorageMemory } from "rxdb/plugins/storage-memory";
 import type { UserProfile, Scheme } from "../../shared/types";
-
-// Dev mode plugin for better errors in development
-if (typeof process !== "undefined" && process.env?.NODE_ENV !== "production") {
-  addRxPlugin(RxDBDevModePlugin);
-}
 
 const profileSchema = {
   version: 0,
@@ -59,10 +53,12 @@ const schemeSchema = {
 export type ProfileCollection = RxCollection<UserProfile>;
 export type SchemeCollection = RxCollection<Scheme>;
 
-export interface UdaanDB extends RxDatabase {
+export type UdaanCollections = {
   profiles: ProfileCollection;
   schemes: SchemeCollection;
-}
+};
+
+export type UdaanDB = RxDatabase<UdaanCollections>;
 
 let dbInstance: UdaanDB | null = null;
 
@@ -73,15 +69,14 @@ export async function getDatabase(useMemory = false): Promise<UdaanDB> {
   if (useMemory || typeof window === "undefined") {
     storage = getRxStorageMemory();
   } else {
-    const mod = await import("rxdb/plugins/storage-indexeddb");
-    storage = mod.getRxStorageIndexedDB();
+    const { getRxStorageDexie } = await import("rxdb/plugins/storage-dexie");
+    storage = getRxStorageDexie();
   }
 
-  const db = await createRxDatabase<UdaanDB>({
+  const db = await createRxDatabase<UdaanCollections>({
     name: "udaan",
     storage,
     multiInstance: false,
-    ignoreDuplicate: true,
   });
 
   await db.addCollections({
@@ -89,7 +84,7 @@ export async function getDatabase(useMemory = false): Promise<UdaanDB> {
     schemes: { schema: schemeSchema },
   });
 
-  dbInstance = db as unknown as UdaanDB;
+  dbInstance = db;
   return dbInstance;
 }
 
@@ -117,7 +112,7 @@ export async function getCachedSchemes(): Promise<Scheme[]> {
 
 export async function destroy(): Promise<void> {
   if (dbInstance) {
-    await dbInstance.destroy();
+    await dbInstance.remove();
     dbInstance = null;
   }
 }
