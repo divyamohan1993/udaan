@@ -1,0 +1,55 @@
+{
+  "description": "Claude Remote Tasks for autonomous Udaan maintenance. These are REAL scheduled tasks that run on Anthropic's cloud infrastructure via Claude MAX subscription.",
+  "tasks": [
+    {
+      "name": "scheme-db-refresh",
+      "schedule": "0 20 * * *",
+      "schedule_description": "Daily at 2:00 AM IST (20:30 UTC previous day)",
+      "repo": "udaan",
+      "prompt": "Use the scheme-update skill. Search for Indian government schemes announced or updated in the last 24 hours. Check: PIB press releases (pib.gov.in), MyScheme portal (myscheme.gov.in), Ministry websites. If new schemes found, add to src/data/schemes/central.json with full bilingual data. Run tests. Commit if changes found. Report: schemes added, schemes updated, any removals.",
+      "expected_duration": "5-15 minutes",
+      "failure_action": "Log error, retry once after 1 hour"
+    },
+    {
+      "name": "health-check",
+      "schedule": "0 */6 * * *",
+      "schedule_description": "Every 6 hours",
+      "repo": "udaan",
+      "prompt": "Check Udaan deployment health. Verify: (1) /health endpoint returns 200 with status 'ok', (2) /api/schemes returns valid JSON with 50+ schemes, (3) /api/emergency/critical returns emergency contacts, (4) Homepage loads under 3 seconds. Report TTFB and any failures. If critical failure detected, alert immediately.",
+      "expected_duration": "1-2 minutes",
+      "failure_action": "Immediate alert to project lead"
+    },
+    {
+      "name": "dependency-audit",
+      "schedule": "0 3 * * 1",
+      "schedule_description": "Weekly Monday at 8:30 AM IST (3:00 UTC)",
+      "repo": "udaan",
+      "prompt": "Run 'bun audit' to check for known vulnerabilities. If any HIGH or CRITICAL CVEs found: (1) Create a fix branch, (2) Update affected packages, (3) Run full test suite, (4) If tests pass, commit and create PR. Also check: RxDB, Elysia, Qwik for new major versions with security fixes.",
+      "expected_duration": "5-10 minutes",
+      "failure_action": "Create GitHub issue with CVE details"
+    },
+    {
+      "name": "analytics-digest",
+      "schedule": "0 12 * * 5",
+      "schedule_description": "Weekly Friday at 5:30 PM IST (12:00 UTC)",
+      "repo": "udaan",
+      "prompt": "Generate weekly Udaan analytics digest. Aggregate from Cloudflare Analytics: (1) Total visits by page, (2) Most-used crisis pathways (which crisis type -> which schemes), (3) Purpose compass completion rate, (4) Circle creation count, (5) Geographic distribution of users, (6) Error rates by endpoint, (7) Average TTFB by Indian city. Format as a markdown report in docs/analytics/.",
+      "expected_duration": "3-5 minutes",
+      "failure_action": "Skip, retry next week"
+    },
+    {
+      "name": "offline-bundle-regen",
+      "schedule": "30 20 * * *",
+      "schedule_description": "Daily at 2:30 AM IST (30 min after scheme refresh)",
+      "repo": "udaan",
+      "prompt": "Rebuild offline data bundles after scheme-db-refresh. (1) Build bloom filters: 'bun scripts/build-bloom-filters.ts', (2) Generate scheme data snapshot for R2, (3) Upload to R2 via Cloudflare MCP, (4) Update service worker cache version if data changed. This ensures offline users get fresh scheme data on next sync.",
+      "expected_duration": "2-3 minutes",
+      "failure_action": "Log warning, offline users continue with previous bundle"
+    }
+  ],
+  "monitoring": {
+    "dashboard": "Cloudflare Analytics + Claude Code Analytics API",
+    "alerts": "Health check failures trigger immediate notification",
+    "retention": "Analytics digests retained in docs/analytics/ for 52 weeks"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "hooks": {
+    "PreCommit": [
+      {
+        "name": "i18n-check",
+        "command": "bun scripts/check-i18n.ts",
+        "description": "Verify all i18n strings have Hindi translations"
+      },
+      {
+        "name": "type-check",
+        "command": "bunx tsc --noEmit --skipLibCheck",
+        "description": "Block commits with TypeScript errors"
+      }
+    ],
+    "PrePush": [
+      {
+        "name": "test-gate",
+        "command": "bunx vitest run",
+        "description": "All tests must pass before push"
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "Bash(bun *)",
+      "Bash(bunx *)",
+      "Bash(git *)",
+      "Bash(wrangler *)",
+      "Bash(curl *)"
+    ]
+  }
+}

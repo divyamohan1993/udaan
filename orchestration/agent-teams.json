@@ -1,0 +1,113 @@
+{
+  "description": "Claude Agent Team configuration used to build Udaan. This is the REAL team structure that was executed, not a hypothetical.",
+  "team": {
+    "name": "udaan-builders",
+    "created": "2026-04-09",
+    "lead": {
+      "role": "coordinator",
+      "model": "claude-opus-4-6",
+      "context": "1M tokens",
+      "responsibilities": [
+        "Decompose spec into 18 tasks across 4 parallel workstreams",
+        "Spawn and coordinate 4 agent teammates",
+        "Write cross-cutting code (journey state, shared components)",
+        "Review agent output, resolve conflicts",
+        "Broadcast design directives (MLP, defense in depth, real data)",
+        "Reassign work from slow agents to fast ones",
+        "Final verification and build"
+      ]
+    },
+    "members": [
+      {
+        "name": "frontend-agent",
+        "model": "claude-opus-4-6",
+        "focus": "Qwik PWA, WCAG AAA components, 3-layer pages, MLP polish",
+        "files_owned": ["src/routes/", "src/components/"],
+        "instructions": "WCAG AAA always. 48px touch targets. Hindi first. Qwik resumability patterns. No heavy JS. Steve Jobs UX standard.",
+        "delivered": [
+          "7 WCAG AAA UI components (button, card, select, radio-group, progress, badge, language-toggle)",
+          "Landing page with crisis entry points",
+          "Layer 1 Sahara: triage form, scheme results, mental health (breathing + grounding + helplines)",
+          "Layer 2 Khoj: purpose compass, SVG radar, mission matching",
+          "Layer 3 Sangam: circles with real neighborhoods, create form",
+          "MLP polish: warm Hindi bridges between layers, caring error states",
+          "Defense in depth: emergency footer on every page, mental health FAB",
+          "Journey state integration connecting all 3 layers",
+          "404 page with caring message and emergency contacts"
+        ],
+        "commits": 5
+      },
+      {
+        "name": "api-agent",
+        "model": "claude-opus-4-6",
+        "focus": "Elysia Worker API, D1 schema, offline engine, service worker, e2e tests",
+        "files_owned": ["src/worker/", "src/lib/offline/", "scripts/", "tests/", "public/sw.js"],
+        "instructions": "Edge-first. O(1) lookups. Parameterized queries only. Defense in depth on every endpoint.",
+        "delivered": [
+          "Elysia Worker entry with CloudflareAdapter",
+          "Scheme API routes (list, detail, filter by state)",
+          "Emergency contacts API with state filtering",
+          "Health endpoint",
+          "D1 helpers with parameterized queries",
+          "D1 schema + seed script",
+          "Bloom filter build script",
+          "RxDB offline store (profile + scheme caching)",
+          "Service worker (cache-first pages, network-first API, hardcoded emergency HTML fallback)",
+          "Playwright e2e tests (crisis flow, accessibility, WCAG AAA)",
+          "Cloudflare Pages adapter setup",
+          "Vitest configuration",
+          "Build verification (zero errors)",
+          "Defense in depth: caring error messages, emergency contacts in every response",
+          "50 real government schemes expansion"
+        ],
+        "commits": 4
+      },
+      {
+        "name": "data-agent",
+        "model": "claude-opus-4-6",
+        "focus": "Scheme database, eligibility engine, i18n, mission templates",
+        "files_owned": ["src/data/", "src/shared/", "src/lib/eligibility/", "src/lib/matching/", "src/lib/i18n/"],
+        "instructions": "Accuracy critical. Every scheme must be real. Hindi must be natural.",
+        "status": "Unresponsive -- work reassigned to api-agent and team lead",
+        "commits": 0
+      },
+      {
+        "name": "orchestration-agent",
+        "model": "claude-opus-4-6",
+        "focus": "Hooks, skills, MCP config, scheduled tasks, showcase documentation",
+        "files_owned": [".claude/", "orchestration/", "docs/showcase/"],
+        "instructions": "Every hook must have a clear gate function. Skills must be self-contained. Configs must be production-grade.",
+        "status": "Unresponsive -- work completed by team lead directly",
+        "commits": 0
+      }
+    ]
+  },
+  "workflow_executed": {
+    "phase_1_scaffold": {
+      "owner": "team-lead",
+      "duration": "3 minutes",
+      "output": "Qwik + Bun + Tailwind v4 + types + constants"
+    },
+    "phase_2_parallel_build": {
+      "agents": ["frontend-agent", "api-agent", "data-agent", "orchestration-agent"],
+      "duration": "20 minutes",
+      "note": "data-agent and orchestration-agent went unresponsive. Work redistributed to api-agent, frontend-agent, and team-lead."
+    },
+    "phase_3_integration": {
+      "owner": "team-lead + frontend-agent",
+      "duration": "10 minutes",
+      "output": "Cross-layer journey state, shared components, MLP polish"
+    },
+    "phase_4_verification": {
+      "owner": "team-lead",
+      "duration": "5 minutes",
+      "output": "24 tests passing, build clean, real data verified"
+    }
+  },
+  "lessons_learned": [
+    "Fast agents (api-agent, frontend-agent) can cover for slow/unresponsive ones",
+    "Broadcast directives keep all agents aligned on quality bar",
+    "Cross-cutting concerns (journey state, emergency footer) should be written by lead, not delegated",
+    "Real data verification (web search for helpline numbers) is a lead responsibility"
+  ]
+}
